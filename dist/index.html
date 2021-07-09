@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+	<style>* {
+			box-sizing: border-box;
+		}
+
+		body {
+
+			font-family: Helvetica, sans-serif;
+		}
+
+		/* The actual timeline (the vertical ruler) */
+		.timeline {
+			position: relative;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		/* The actual timeline (the vertical ruler) */
+		.timeline::after {
+			content: '';
+			position: absolute;
+			width: 6px;
+			background-color: #474e5d;
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			margin-left: -3px;
+		}
+
+		/* Container around content */
+		.container {
+			padding: 10px 40px;
+			position: relative;
+			background-color: inherit;
+			width: 50%;
+		}
+
+		/* The circles on the timeline */
+		.container::after {
+			content: '';
+			position: absolute;
+			width: 25px;
+			height: 25px;
+			right: -17px;
+			background-color: white;
+			border: 4px solid #bfe495ec;
+			top: 15px;
+			border-radius: 50%;
+			z-index: 1;
+		}
+
+		/* Place the container to the left */
+		.left {
+			left: 0;
+		}
+
+		/* Place the container to the right */
+		.right {
+			left: 50%;
+		}
+
+		/* Add arrows to the left container (pointing right) */
+		.left::before {
+			content: " ";
+			height: 0;
+			position: absolute;
+			top: 22px;
+			width: 0;
+			z-index: 1;
+			right: 30px;
+			border: medium solid #474e5d;
+			border-width: 10px 0 10px 10px;
+			border-color: transparent transparent transparent #474e5d;
+		}
+
+		/* Add arrows to the right container (pointing left) */
+		.right::before {
+			content: " ";
+			height: 0;
+			position: absolute;
+			top: 22px;
+			width: 0;
+			z-index: 1;
+			left: 30px;
+			border: medium solid #474e5d;
+			border-width: 10px 10px 10px 0;
+			border-color: transparent #474e5d transparent transparent;
+		}
+
+		/* Fix the circle for containers on the right side */
+		.right::after {
+			left: -16px;
+		}
+
+		/* The actual content */
+		.content {
+			padding: 20px 30px;
+			background-color: #bfe495ec;
+			position: relative;
+			border-radius: 6px;
+		}
+
+		/* Media queries - Responsive timeline on screens less than 600px wide */
+		@media screen and (max-width: 600px) {
+
+			/* Place the timelime to the left */
+			.timeline::after {
+				left: 31px;
+			}
+
+			/* Full-width containers */
+			.container {
+				width: 100%;
+				padding-left: 70px;
+				padding-right: 25px;
+			}
+
+			/* Make sure that all arrows are pointing leftwards */
+			.container::before {
+				left: 60px;
+				border: medium solid white;
+				border-width: 10px 10px 10px 0;
+				border-color: transparent white transparent transparent;
+			}
+
+			/* Make sure all circles are at the same spot */
+			.left::after,
+			.right::after {
+				left: 15px;
+			}
+
+			/* Make all right containers behave like the left ones */
+			.right {
+				left: 0%;
+			}
+		}
+
+		.btn1 {
+			border: 2px solid black;
+			background-color: white;
+			color: black;
+			padding: 14px 28px;
+			font-size: 16px;
+			cursor: pointer;
+			border-radius: 40px;
+		}
+
+		/* Green */
+		.success1 {
+			border-color: #7f8885;
+			color: rgb(60, 65, 60);
+		}
+
+		.success2 {
+			border-color: #7f8885;
+			color: rgb(60, 65, 60);
+		}
+
+		.success3 {
+			border-color: #7f8885;
+			color: rgb(60, 65, 60);
+		}
+
+		.success1:hover {
+			background-color: #e76464;
+			color: white;
+		}
+
+		.success2:hover {
+			background-color: #84dada;
+			color: white;
+		}
+
+		.success3:hover {
+			background-color: #56c79d;
+			color: white;
+		}
+
+		.container1 {
+			position: relative;
+			max-width: 800px;
+			margin: 0 auto;
+
+		}
+
+
+
+		.container1 .content1 {
+			position: absolute;
+			bottom: 0;
+			background: rgb(236, 198, 198);
+			/* Fallback color */
+			background: rgba(240, 205, 205, 0.5);
+			/* Black background with 0.5 opacity */
+			color: #f1f1f1;
+			width: 100%;
+			padding: 20px;
+			border-radius: 30px;
+		}</style>
+	<!-- HTML Meta Tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nishtha Rathod | Web Developer</title>
+	<meta name="description" content="Hi, I am Nishtha, a Web Developer.">
+
+	<!-- Google / Search Engine Tags -->
+	<meta itemprop="name" content="Nishtha Rathod | Web Developer">
+	<meta itemprop="description" content="Hi, I am Nishtha, a Web Developer.">
+	<meta itemprop="image" content="/meta.9710a281.jpg">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content="http://nisar.surge.sh">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Nishtha Rathod | Web Developer">
+	<meta property="og:description" content="Hi, I am Nishtha, a Web Developer.">
+	<meta property="og:image" content="/meta.9710a281.jpg">
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Nishtha Rathod | Web Developer">
+	<meta name="twitter:description" content="Hi, I am Nishtha, a Web Developer.">
+	<meta name="twitter:image" content="/meta.9710a281.jpg">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400" rel="stylesheet">
+	<script src="/js.00a46daa.js" defer=""></script>
+
+
+
+<link rel="stylesheet" href="/js.00a46daa.css"></head>
+
+<body>
+	<!-- ***** Navigation ***** -->
+
+	<div class="navigation">
+		<input type="checkbox" class="navigation__checkbox" id="nav-toggle">
+		<label for="nav-toggle" class="navigation__button">
+			<span class="navigation__icon" aria-label="toggle navigation menu">&nbsp;</span>
+		</label>
+		<div class="navigation__background">&nbsp;</div>
+
+		<nav class="navigation__nav" role="navigation">
+			<ul class="navigation__list">
+				<li class="navigation__item">
+					<a href="#about" class="navigation__link"><span>01</span>About</a>
+				</li>
+				<li class="navigation__item">
+					<a href="#skill" class="navigation__link"><span>02</span>Skills</a>
+				</li>
+				<li class="navigation__item">
+					<a href="#work" class="navigation__link"><span>03</span>Projects</a>
+				</li>
+
+				<li class="navigation__item">
+					<a href="#footer" class="navigation__link"><span>05</span>Contact</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+	<!-- ***** Header ***** -->
+
+	<header class="header" role="banner" id="header">
+		<div class="header__text-box">
+			<div class="container1">
+				<div class="content1">
+					<h1 class="heading-primary" style="color: #eeebe8;">Hi! I am Nishtha</h1>
+
+					<p>
+						<strong><a style="color: #eeebe8;" href="" class="typewrite header__description" data-period="1000" data-type="[ &quot;I am Creative.&quot;, &quot;I Love To Code.&quot;, &quot;I Love to Develop.&quot;,&quot;<3&quot;]">
+								<span class="wrap"></span>
+							</a></strong>
+					</p>
+					<a href="#popup" class="btn btn__hire" id="hire">View CV &nbsp;&rarr;</a>
+				</div>
+			</div>
+		</div>
+		<!-- <p class="header__director">Scroll Down &darr;</p> -->
+	</header>
+
+	<!-- ***** Main ***** -->
+
+	<main role="main">
+		<!-- ***** Section Intro ***** -->
+
+		<section class="intro">
+			<div class="row">
+				<h2 class="heading-secondary">Nice to Have You Here</h2>
+				<p class="intro-text">
+					Are You looking for a fast-performing and user-friendly website to
+					represent your product or business? perhaps you are looking for any
+					kind of consultation? or maybe you have an idea you’d like to
+					express... maybe you’d like to collaborate? moreover, feel free to
+					reach out to me with some advice, I’d love to hear some constructive
+					criticism about any of my projects!
+				</p>
+				<a href="https://www.linkedin.com/in/nishtha-rathod-099867192/" class="btn">Say Hello !</a>
+			</div>
+		</section>
+
+		<!-- ***** Section Skills ***** -->
+
+		<section class="skill" id="skill">
+			<!-- <div class="u-text-center"></div> -->
+			<h2 class="heading-secondary">My Skillset</h2>
+			<p class="intro-text">
+				</p><h4 class="heading-tertiary ">Front-end</h4><br>
+				<button class="btn1 success1" style="align-items:left;">HTML</button>
+				<button class="btn1 success1" style="align-items:left;">CSS</button>
+				<button class="btn1 success1" style="align-items:left;">Bootstrap</button>
+				<button class="btn1 success1" style="align-items:left;">Javascript</button>
+				<button class="btn1 success1" style="align-items:left;">EJS</button>
+			<p></p><br><br>
+			<p class="intro-text">
+				</p><h4 class="heading-tertiary ">Back-end</h4><br>
+				<button class="btn1 success2" style="align-items:left;">NodeJs</button>
+				<button class="btn1 success2" style="align-items:left;">Django</button>
+				<button class="btn1 success2" style="align-items:left;">ReactJs</button>
+			<p></p><br><br>
+			<p class="intro-text">
+				</p><h4 class="heading-tertiary ">Miscellaneous</h4><br>
+				<button class="btn1 success3" style="align-items:left;">MongoDB</button>
+				<button class="btn1 success3" style="align-items:left;">Graphql</button>
+				<button class="btn1 success3" style="align-items:left;">C++</button>
+				<button class="btn1 success3" style="align-items:left;">C</button>
+				<button class="btn1 success3" style="align-items:left;">Python</button>
+				<button class="btn1 success3" style="align-items:left;">Latex</button>
+				<button class="btn1 success3" style="align-items:left;">Github</button>
+			<p></p>
+
+			<a href="#work" class="btn">My Projects</a>
+
+		</section>
+
+		<section class="about" id="about">
+			<div class="u-text-center">
+				<h2 class="heading-secondary">About Me</h2>
+			</div>
+			<p class="intro-text">
+				I am a self-taught Frontend+Backend Web Developer from Vadodara, Gujarat. About
+				an year ago is when I started my learning journey on how to make
+				unique websites for my institue itself, and I took up many projects from the
+				technical clubs.
+				<br> <br>I have always been a curious
+				individual, which is why I’d love to collaborate and do some
+				real-world projects in order to flourish my skills. I'm not perfect,
+				however. I'm very far from perfection, yet I'm resilient, assertive
+				and stubborn and I find learning a fascinating process.
+				<br><br> I am currently
+				learning about MERN stack, as well as pursuing a research internship at IIT Indore in Computational
+				Fluid Dynamics.
+			</p><br><br>
+			<div class="timeline">
+				<div class="container left">
+					<div class="content">
+						<h2>2010-2017</h2>
+						<p><strong>Secondary Education- Auxilium Convent</strong></p>
+					</div>
+				</div>
+				<div class="container right">
+					<div class="content">
+						<h2>2018-2019</h2>
+						<p><strong>Secondary Education- Green Valley High School</strong> </p>
+					</div>
+				</div>
+				<div class="container left">
+					<div class="content">
+						<h2>2019-Present</h2>
+						<p><strong>B.Tech- Chemical Engineering- IIT Guwahati</strong></p>
+					</div>
+				</div>
+				<div class="container right">
+					<div class="content">
+						<h2>2021</h2>
+						<p><strong>Research internship at IIT Indore<br> Back-end developer at a Startup -
+								Agrivision4U</strong> </p>
+					</div>
+				</div>
+
+
+			</div>
+
+
+
+		</section>
+
+		<!-- ***** Section Craft ***** -->
+
+		<section class="craft">
+			<div class="u-text-center">
+				<h2 class="heading-secondary">My Craft in a Nutshell</h2>
+				<p class="intro-text">
+					I believe simplicity is undervalued and therefore strive to make things as simple as
+					possible.<br>I am
+					also very concerned about best practices and always sacrifice developer experience over user
+					experience.
+
+				</p>
+			</div>
+
+			<div class="row">
+				<div class="craft__item">
+					<img src="/browser-16.fcfd00a5.svg" alt="Browser" class="craft__img">
+					<h3 class="heading-tertiary">Front-end</h3>
+					<p class="craft__description">
+						I value simple content structure, clean design patterns, and
+						thoughtful interactions filled with semantics and performance. I
+						tend to code things from scratch and enjoy bringing ideas to life.
+					</p>
+				</div>
+
+				<div class="craft__item hack"></div>
+
+				<div class="craft__item">
+					<img src="/browser-26.c66fe73d.svg" alt="Server" class="craft__img">
+					<h3 class="heading-tertiary">Back-end</h3>
+					<p class="craft__description">
+						I am a huge fan of "convention over configuration" and like things
+						that follow "don't repeat yourself" principle, therefore I do my
+						Backend in NodeJs and Django as well as MERN.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ***** Section Work ***** -->
+
+		<section class="craft" id="work">
+			<div class="u-text-center">
+				<h2 class="heading-secondary">My Projects</h2>
+
+			</div>
+
+			<div class="row">
+				<div class="craft__item">
+
+					<img src="/browser-16.fcfd00a5.svg" alt="Browser" class="craft__img">
+					<h3 class="heading-tertiary">HAB Portal 2.0</h3><br>
+					<h4>Student’s Web Committee - FullStack Project</h4>
+					<p class="craft__description">
+						Developed the Back-end for the Hostel Affairs board using Outlook authentication and NodeJs
+						along with Pass-port,
+						Express and MongoDB, currently working on Front-end.
+					</p>
+					<p><a href="https://github.com/Nishtha131201/HAB2.0"><i class="fa fa-github" style="font-size:24px; right:2px;"></i>
+							Github Link</a></p>
+				</div>
+
+				<div class="craft__item hack"></div>
+
+				<div class="craft__item">
+					<img src="/browser-16.fcfd00a5.svg" alt="Server" class="craft__img">
+					<h3 class="heading-tertiary">Faculty Website</h3><br>
+					<h4>Dr. Nelson Muthu - FullStack Project</h4>
+					<p class="craft__description">
+						Developed a Django based personal website for Dr. Nelson Muthu, for a better reach for himself
+						and projects, to
+						be presented in the international conferences as well.
+					</p>
+					<p><a href="https://github.com/Nishtha131201/Dr_Nelson_Muthu_webpage"><i class="fa fa-github" style="font-size:24px; right:2px;"></i>
+							Github Link</a></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="craft__item">
+					<img src="/browser-16.fcfd00a5.svg" alt="Browser" class="craft__img">
+					<h3 class="heading-tertiary">Orion-IITG</h3><br>
+					<h4>Coding Club - FullStack Project</h4>
+					<p class="craft__description">
+						Designed and Developed a web-app like Stack-overflow based on MERN-stack on which people can
+						post
+						general, tech related or any sort of queries on the home feed
+						provided with a search bar to search across all the previous questions based on
+						keywords and other users will be able to answer those queries.
+					</p>
+					<p><a href="https://github.com/Nishtha131201/Orion-Project"><i class="fa fa-github" style="font-size:24px; right:2px;"></i>
+							Github Link</a></p>
+				</div>
+
+				<div class="craft__item hack"></div>
+
+				<div class="craft__item">
+					<img src="/browser-16.fcfd00a5.svg" alt="Server" class="craft__img">
+					<h3 class="heading-tertiary">Interview-Tracker</h3><br>
+					<h4>Coding Club - FullStack Project</h4>
+					<p class="craft__description">
+						Developed an Interview preparation website for the students of IIT Guwahati using Node js, and
+						Passport, MongoDB
+						and express.
+					</p>
+					<p><a href="https://github.com/Nishtha131201/interview_tracker"><i class="fa fa-github" style="font-size:24px; right:2px;"></i>
+							Github Link</a></p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- ***** Footer ***** -->
+
+	<footer class="footer" id="footer">
+		<nav>
+			<ul class="footer__social-links">
+				<li class="footer__social-link">
+					<a href="https://www.facebook.com/nishtha.rathod.13/"><i class="fa fa-facebook" style="font-size:24px; right:2px;"></i> Facebook</a>
+				</li>
+				<li class=" footer__social-link">
+					<a href="https://github.com/Nishtha131201"><i class="fa fa-github" style="font-size:24px; right:2px;"></i>
+						Github</a>
+				</li>
+				<li class="footer__social-link">
+					<a href="https://www.linkedin.com/in/nishtha-rathod-099867192/"><i class="fa fa-linkedin" style="font-size:24px; right:2px;"></i> Linkedin</a>
+				</li>
+				<li class="number">(+91) 8469510331</li><br>
+				<li>
+					<a href="mailto:n.rathod@iitg.ac.in" class="number" style="top:50px;">n.rathod@iitg.ac.in</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="footer__outro">
+			<p class="footer__info">
+				Crafted by
+				<a href="https://www.linkedin.com/in/nishtha-rathod-099867192/">Nishtha.</a>
+			</p>
+			<p class="footer__info">&copy;2021. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- ***** Popup ***** -->
+
+	<div class="popup" id="popup">
+		<div class="popup__content">
+			<div class="popup__right">
+				<a href="#!" class="popup__close">&times;</a>
+				<div class="popup__top">
+					<h2 class="heading-secondary u-text-center">Curriculum Vitae</h2>
+					<p class="popup__text">Grab My CV to find out more about me.</p>
+					<div class="popup__buttons">
+						<a class="btn" download="">Download</a>
+					</div>
+				</div>
+				<div class="popup__contact-info">
+					<nav>
+						<ul class="footer__social-links">
+							<li class="footer__social-link">
+								<a href="https://www.facebook.com/nishtha.rathod.13/"><i class="fa fa-facebook" style="font-size:24px; right:2px;"></i> Facebook</a>
+							</li>
+							<li class=" footer__social-link">
+								<a href="https://github.com/Nishtha131201"><i class="fa fa-github" style="font-size:24px; right:2px;"></i> Github</a>
+							</li>
+							<li class="footer__social-link">
+								<a href="https://www.linkedin.com/in/nishtha-rathod-099867192/"><i class="fa fa-linkedin" style="font-size:24px; right:2px;"></i> Linkedin</a>
+							</li>
+							<li class="number">(+91) 8469510331</li>
+							<li>
+								<a href="mailto:n.rathod@iitg.ac.in" class="number">n.rathod@iitg.ac.in</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>var navigation__checkbox = document.querySelector(".navigation__checkbox");
+var navigation__list = document.querySelector(".navigation__list");
+navigation__list.addEventListener('click', function (e) {
+  if (e.target !== navigation__list) {
+    navigation__checkbox.checked = false;
+  }
+});
+
+var TxtType = function TxtType(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 1000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtType.prototype.tick = function () {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+  var that = this;
+  var delta = 200 - Math.random() * 100;
+
+  if (this.isDeleting) {
+    delta /= 2;
+  }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function () {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function () {
+  var elements = document.getElementsByClassName('typewrite');
+
+  for (var i = 0; i < elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-type');
+    var period = elements[i].getAttribute('data-period');
+
+    if (toRotate) {
+      new TxtType(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+};</script>
+</body>
+
+</html>
